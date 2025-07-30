@@ -48,7 +48,12 @@ function App() {
             style={{ padding: '0.5rem', fontSize: '1rem', width: '70%', marginBottom: '1rem' }}
           />
 
-          <div id="recaptcha-container" style={{ marginBottom: '1rem' }}></div>
+           <div
+    className="g-recaptcha"
+    data-sitekey="6Lcn9pQrAAAAAOucfmOXqzElBtq7RlELnp4J1QOX"
+    data-action="LOGIN"
+    style={{ marginBottom: '1rem' }}
+  ></div>
 
           <button type="submit" style={{
             padding: '0.6rem 1.5rem',
