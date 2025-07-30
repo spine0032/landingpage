@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import './index.css';
+
 function App() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
