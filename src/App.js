@@ -28,14 +28,33 @@ function App() {
       {/* Join Waitlist Form */}
       {!submitted ? (
         <form onSubmit={handleSubmit} style={{ marginTop: '2rem' }}>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ padding: '0.5rem', fontSize: '1rem', width: '70%', marginBottom: '1rem' }}
-          />
+  <input
+    type="email"
+    placeholder="Enter your email"
+    required
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    style={{ padding: '0.5rem', fontSize: '1rem', width: '70%', marginBottom: '1rem' }}
+  />
+
+  <div
+    className="g-recaptcha"
+    data-sitekey="YOUR_SITE_KEY_HERE"
+    style={{ marginBottom: '1rem' }}
+  ></div>
+
+  <button type="submit" style={{
+    padding: '0.6rem 1.5rem',
+    fontSize: '1rem',
+    backgroundColor: '#2f5ac3',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px'
+  }}>
+    Join Waitlist
+  </button>
+</form>
+
           <br />
           <button type="submit" style={{ padding: '0.6rem 1.5rem', fontSize: '1rem', backgroundColor: '#2f5ac3', color: 'white', border: 'none', borderRadius: '5px' }}>
             Join Waitlist
