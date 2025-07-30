@@ -14,7 +14,9 @@ function App() {
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
       {/* Logo */}
-      <img src="https://www.planwithsynergy.com/wp-content/uploads/2023/08/synergy-logo-black.png" alt="Synergy Logo" style={{ maxWidth: '200px', marginBottom: '1rem' }} />
+      <img src="/synergy-logo.png" alt="Synergy Logo" style={{ maxWidth: '200px', marginBottom: '1rem' }} />
+
+
 
       {/* Headline & Pitch */}
       <h1>Built for Independent Agents. Designed for Growth.</h1>
