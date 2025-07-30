@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './index.css';
+import './index.css'; // or './App.css'
+
 
 function App() {
   const [email, setEmail] = useState('');
