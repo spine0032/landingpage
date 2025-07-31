@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import './index.css';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       if (window.grecaptcha) {
         window.grecaptcha.ready(() => {
           window.grecaptcha.render('recaptcha-container', {
-            sitekey: '6LfbSgYpAAAAAGOMvhKHEs_HsUdGZBGzmqozL-FL',
+            sitekey: '6Lcn9pQrAAAAAOucfmOXqzElBtq7RlELnp4J1QOX',
           });
         });
       }
@@ -25,18 +26,35 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+
+    emailjs.send(
+      'service_574gjgm', // Your EmailJS service ID
+      'template_9ufh73l', // Your EmailJS template ID
+      { user_email: email },
+      'spcrOI2BwY7f9kbUI' // Your public key
+    )
+    .then((result) => {
+      console.log('Email sent:', result.text);
+      setSubmitted(true);
+    })
+    .catch((error) => {
+      console.error('Email error:', error);
+      alert('There was an error sending your email. Please try again.');
+    });
   };
 
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
+      {/* Logo */}
       <img src="/synergy-logo.png" alt="Synergy Logo" style={{ maxWidth: '200px', marginBottom: '1rem' }} />
 
+      {/* Headline & Pitch */}
       <h1>Built for Independent Agents. Designed for Growth.</h1>
       <p style={{ fontSize: '1.1rem', color: '#555' }}>
         Synergy Field Agent Pro brings together client mapping, appointment tracking, AI-driven insights, and referral tools — all in one smart, mobile-friendly app built for modern insurance pros.
       </p>
 
+      {/* Form */}
       {!submitted ? (
         <form onSubmit={handleSubmit} style={{ marginTop: '2rem' }}>
           <input
@@ -48,21 +66,24 @@ function App() {
             style={{ padding: '0.5rem', fontSize: '1rem', width: '70%', marginBottom: '1rem' }}
           />
 
-           <div
-    className="g-recaptcha"
-    data-sitekey="6Lcn9pQrAAAAAOucfmOXqzElBtq7RlELnp4J1QOX"
-    data-action="LOGIN"
-    style={{ marginBottom: '1rem' }}
-  ></div>
+          <div
+            id="recaptcha-container"
+            className="g-recaptcha"
+            data-sitekey="6Lcn9pQrAAAAAOucfmOXqzElBtq7RlELnp4J1QOX"
+            style={{ marginBottom: '1rem' }}
+          ></div>
 
-          <button type="submit" style={{
-            padding: '0.6rem 1.5rem',
-            fontSize: '1rem',
-            backgroundColor: '#2f5ac3',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px'
-          }}>
+          <button
+            type="submit"
+            style={{
+              padding: '0.6rem 1.5rem',
+              fontSize: '1rem',
+              backgroundColor: '#2f5ac3',
+              color: 'white',
+              border: 'none',
+              borderRadius: '5px',
+            }}
+          >
             Join Waitlist
           </button>
         </form>
