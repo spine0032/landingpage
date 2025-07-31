@@ -27,34 +27,26 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    emailjs.send(
-      'service_574gjgm', // Your EmailJS service ID
-      'template_9ufh73l', // Your EmailJS template ID
-      { user_email: email },
-      'spcrOI2BwY7f9kbUI' // Your public key
-    )
-    .then((result) => {
-      console.log('Email sent:', result.text);
-      setSubmitted(true);
-    })
-    .catch((error) => {
-      console.error('Email error:', error);
-      alert('There was an error sending your email. Please try again.');
-    });
+    emailjs.send('service_574gjgm', 'template_9ufh73l', { user_email: email }, 'spcrOI2BwY7f9kbUI')
+      .then(() => {
+        setSubmitted(true);
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        alert('There was a problem. Please try again later.');
+      });
   };
 
   return (
     <div style={{ maxWidth: '600px', margin: '0 auto', padding: '2rem', textAlign: 'center', fontFamily: 'Arial, sans-serif' }}>
-      {/* Logo */}
       <img src="/synergy-logo.png" alt="Synergy Logo" style={{ maxWidth: '200px', marginBottom: '1rem' }} />
 
-      {/* Headline & Pitch */}
       <h1>Built for Independent Agents. Designed for Growth.</h1>
       <p style={{ fontSize: '1.1rem', color: '#555' }}>
-        Synergy Field Agent Pro brings together client mapping, appointment tracking, AI-driven insights, and referral tools — all in one smart, mobile-friendly app built for modern insurance pros.
+        Synergy Field Agent Pro brings together client mapping, appointment tracking, AI-driven insights, and referral tools —
+        all in one smart, mobile-friendly app built for modern insurance pros.
       </p>
 
-      {/* Form */}
       {!submitted ? (
         <form onSubmit={handleSubmit} style={{ marginTop: '2rem' }}>
           <input
